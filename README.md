@@ -79,7 +79,3 @@ curl http://localhost:8080/api/habits/1/stats
 ```bash
 go build -o habit-tracker cmd/main.go
 ```
-
-## Лицензия
-
-MIT
