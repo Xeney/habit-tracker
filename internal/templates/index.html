@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер привычек</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Мои привычки</h1>
+        <div id="habits-list">
+            {{range .Habits}}
+            <div class="habit-card">
+                <h2>{{.Title}}</h2>
+                <p>{{.Description}}</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{.Progress}}%;"></div>
+                </div>
+                <span>🔥 Стрейк: {{.Streak}} дней</span>
+                <button onclick="logHabit({{.ID}})">✅ Выполнить</button>
+            </div>
+            {{end}}
+        </div>
+
+        <form id="new-habit-form">
+            <input type="text" id="title" placeholder="Название привычки" required>
+            <input type="text" id="desc" placeholder="Описание">
+            <input type="number" id="goal" placeholder="Цель в день (раз)" value="1">
+            <button type="submit">➕ Добавить</button>
+        </form>
+    </div>
+
+    <script>
+        async function logHabit(id) {
+            const res = await fetch('/api/habits/'+id+'/log', { method: 'POST' });
+            if (res.ok) location.reload();
+        }
+
+        document.getElementById('new-habit-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const desc = document.getElementById('desc').value;
+            const goal = document.getElementById('goal').value;
+            await fetch('/api/habits', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({title, description: desc, goal_per_day: parseInt(goal)})
+            });
+            location.reload();
+        });
+    </script>
+</body>
+</html>

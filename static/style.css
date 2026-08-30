@@ -1,0 +1,84 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.habit-card {
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.habit-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.progress-bar {
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    height: 20px;
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+}
+.progress {
+    background: linear-gradient(90deg, #f7971e, #ffd200);
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+button {
+    background: #ffd700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255,215,0,0.5);
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 1rem;
+}
+input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
