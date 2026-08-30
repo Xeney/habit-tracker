@@ -20,6 +20,38 @@ type Habit struct {
 type HabitLog struct {
 	ID      int       `json:"id"`
 	HabitID int       `json:"habit_id"`
-	Date    time.Time `json:"date"`
+	Date    string    `json:"date"`
 	Count   int       `json:"count"`
+}
+
+type CreateHabitRequest struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	GoalPerDay  int    `json:"goal_per_day"`
+}
+
+type UpdateHabitRequest struct {
+	Title       *string `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
+	GoalPerDay  *int    `json:"goal_per_day,omitempty"`
+}
+
+type LogHabitRequest struct {
+	Count int `json:"count"`
+}
+
+type StatsResponse struct {
+	HabitID       int     `json:"habit_id"`
+	TotalLogs     int     `json:"total_logs"`
+	CurrentStreak int     `json:"current_streak"`
+	BestStreak    int     `json:"best_streak"`
+	CompletionRate float64 `json:"completion_rate"`
+}
+
+type ErrorResponse struct {
+	Error string `json:"error"`
+}
+
+type SuccessResponse struct {
+	Message string `json:"message"`
 }
